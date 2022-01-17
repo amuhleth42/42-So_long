@@ -16,3 +16,12 @@ libft.a :
 
 libmlx.a :
 	@make -C ./mlx
+
+clean :
+	make fclean -C ./libft
+	make clean -C ./mlx
+	rm so_long
+
+re :		fclean all
+
+.PHONY :	re all clean
