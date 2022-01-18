@@ -8,6 +8,30 @@ void	put_pixel(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
+void	put_lign(t_data *data, int x, int y, int color, int size)
+{
+	int	i;
+	
+	i = 0;
+	while (i < size)
+	{
+		put_pixel(data, x + i, y, color);
+		i++;
+	}
+}
+
+void	put_rectangle(t_data *data, int x, int y, int color, int l, int h)
+{
+	int	i;
+
+	i = 0;
+	while (i < h)
+	{
+		put_lign(data, x, y + i, color, l);
+		i++;
+	}
+}
+
 int	main(void)
 {
 	void	*mlx;
@@ -17,7 +41,7 @@ int	main(void)
 	mlx = mlx_init();
 	img.img = mlx_new_image(mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bpp, &img.line_len, &img.endian);
-	put_pixel(&img, 5, 5, 0x00FF0000);
+	put_rectangle(&img, 200, 200, 0x00FF0000, 50, 50);
 	win = mlx_new_window(mlx, 1920, 1080, "So_long");
 	mlx_put_image_to_window(mlx, win, img.img, 0, 0);
 	mlx_loop(mlx);
