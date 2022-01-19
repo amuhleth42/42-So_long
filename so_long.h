@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 17:05:05 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/01/19 17:51:06 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/01/19 19:10:22 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,15 @@ typedef struct	s_game
 	t_img	*player;
 }			t_game;
 
+typedef struct	s_parsing
+{
+	int	first;
+	int	rectangle;
+	int	closed;
+	int	exit;
+	int	collect;
+	int	position;
+	int	no_other;
+	int	ber_format;
+}
 #endif

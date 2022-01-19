@@ -6,13 +6,13 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 17:47:09 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/01/19 18:02:40 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/01/19 19:10:30 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	**parser(char *path)
+char	**read_file(char *path)
 {
 	char	**map;
 	int		i;
@@ -31,6 +31,13 @@ char	**parser(char *path)
 	}
 	close(fd);
 	return (map);
+}
+
+char	**parser(char *path)
+{
+	char	**map;
+
+	map = read_file(path);
 }
 
 void	print_map(char **map)
