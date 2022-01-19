@@ -4,7 +4,7 @@ FLAGS		= -Wall -Wextra -Werror
 INCL		= -I. -I./mlx -I./libft
 LIB			= -L./libft -lft -L./mlx -lmlx -framework OpenGL -framework AppKit
 
-SRCS		= test.c
+SRCS		= parsing.c
 
 all :		${NAME}
 

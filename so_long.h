@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/19 17:05:05 by amuhleth          #+#    #+#             */
+/*   Updated: 2022/01/19 17:51:06 by amuhleth         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef SO_LONG_H
 
@@ -6,24 +16,31 @@
 
 #include "mlx.h"
 #include "libft.h"
+#include <fcntl.h>
 
-typedef struct	s_win
+typedef struct	s_ids
 {
 	void	*mlx;
 	void	*win;
-}			t_win;
+}			t_ids;
 
 typedef struct	s_img
 {
-	t_win	*ids;
 	void	*img;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
-	int		x;
-	int		y;
+	int		w;
+	int		h;
 }			t_img;
 
+typedef struct	s_game
+{
+	void	*mlx;
+	void	*win;
+	char	**map;
+	t_img	*wall;
+	t_img	*collect;
+	t_img	*empty;
+	t_img	*exit;
+	t_img	*player;
+}			t_game;
 
 #endif
