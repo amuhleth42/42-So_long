@@ -43,9 +43,10 @@ typedef struct	s_game
 	t_img	*player;
 }			t_game;
 
-typedef struct	s_parsing
+typedef struct	s_parse
 {
-	int	first;
+	int	x;
+	int	y;
 	int	rectangle;
 	int	closed;
 	int	exit;
@@ -53,5 +54,6 @@ typedef struct	s_parsing
 	int	position;
 	int	no_other;
 	int	ber_format;
-}
+}		t_parse;
+
 #endif
