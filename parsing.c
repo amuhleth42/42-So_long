@@ -173,22 +173,35 @@ void	print_map(char **map)
 	}
 }
 
-char	**parser(char *path)
+int	check_valid_map(t_parse *p)
+{
+	return (p->rectangle && p->closed && p->exit 
+		&& p->collect && p->position 
+		&& p->no_other && p->ber_format);
+}
+
+char	**parser(char *path, t_game *a)
 {
 	char	**map;
-	t_parse	*parsing;
 
 	map = read_file(path);
-	parsing = ft_calloc(1, sizeof(t_parse));
-	if (!parsing)
+	a->parsing = ft_calloc(1, sizeof(t_parse));
+	if (!a->parsing)
 		return (NULL);
-	parsing->ber_format = check_ber(path);
-	map = init_parser(map, parsing);
-	print_parsing(parsing);
+	a->parsing->ber_format = check_ber(path);
+	map = init_parser(map, a->parsing);
+	print_parsing(a->parsing);
+	if (!check_valid_map(a->parsing))
+	{
+		free(map);
+		// to do free correctement
+		// to do display error
+		map = NULL;
+	}
 	return (map);
 }
 
-int	main(int argc, char **argv)
+/*int	main(int argc, char **argv)
 {
 	t_game	a;
 
@@ -199,4 +212,4 @@ int	main(int argc, char **argv)
 	else
 		print_map(a.map);
 	return (0);
-}
+}*/
