@@ -6,6 +6,7 @@ LIB			= -L./libft -lft -L./mlx -lmlx -framework OpenGL -framework AppKit
 
 SRCS		= parsing.c		\
 				main.c		\
+				keyhook.c	\
 
 
 all :		${NAME}

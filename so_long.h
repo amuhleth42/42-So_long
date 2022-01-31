@@ -59,5 +59,6 @@ typedef struct	s_game
 
 char	**parser(char *path, t_game *a);
 void	print_map(char **map);
+int		key_hook(int keycode, t_game *game);
 
 #endif

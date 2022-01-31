@@ -78,6 +78,7 @@ int	main(int argc, char **argv)
 	init_images(&a);
 	put_images(&a, a.map);
 
+	mlx_key_hook(a.win, &key_hook, &a);
 
 	mlx_loop(a.mlx);
 	return (0);
