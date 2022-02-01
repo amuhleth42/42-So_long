@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 17:05:05 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/01/19 19:10:22 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/02/01 18:21:15 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ typedef struct	s_game
 	void	*mlx;
 	void	*win;
 	char	**map;
+	int		p_x;
+	int		p_y;
 	t_img	*wall;
 	t_img	*collect;
 	t_img	*empty;

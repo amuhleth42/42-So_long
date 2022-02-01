@@ -14,8 +14,8 @@ void	init_window(t_game *a)
 
 void	init_img(t_img *img, char *file, void *mlx)
 {
-	img->w = 16;
-	img->h = 16;
+	img->w = 32;
+	img->h = 32;
 	img->img = mlx_xpm_file_to_image(mlx, file, &img->w, &img->h);
 }
 
@@ -23,8 +23,10 @@ void	init_images(t_game *a)
 {
 	a->wall = ft_calloc(1, sizeof(t_img));
 	a->empty = ft_calloc(1, sizeof(t_img));
+	a->player = ft_calloc(1, sizeof(t_img));
 	init_img(a->wall, "assets/wallgrass32.xpm", a->mlx);
 	init_img(a->empty, "assets/star_l_32.xpm", a->mlx);
+	init_img(a->player, "assets/flower32.xpm", a->mlx);
 }
 
 void	put_img(t_game *a, int i, int j, char c)
@@ -36,8 +38,14 @@ void	put_img(t_game *a, int i, int j, char c)
 	y = i * 32;
 	if (c == '1')
 		mlx_put_image_to_window(a->mlx, a->win, a->wall->img, x, y);
-	else if (c == '0')
+	else if (c == 'C')
 		mlx_put_image_to_window(a->mlx, a->win, a->empty->img, x, y);
+	else if (c == 'P')
+	{
+		a->p_x = j;
+		a->p_y = i;
+		mlx_put_image_to_window(a->mlx, a->win, a->player->img, x, y);
+	}
 }
 
 void	put_images(t_game *a, char **map)
