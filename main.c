@@ -23,8 +23,8 @@ void	init_images(t_game *a)
 {
 	a->wall = ft_calloc(1, sizeof(t_img));
 	a->empty = ft_calloc(1, sizeof(t_img));
-	init_img(a->wall, "assets/wall_block.xpm", a->mlx);
-	init_img(a->empty, "assets/orb.xpm", a->mlx);
+	init_img(a->wall, "assets/wallgrass32.xpm", a->mlx);
+	init_img(a->empty, "assets/star_l_32.xpm", a->mlx);
 }
 
 void	put_img(t_game *a, int i, int j, char c)
