@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 18:37:28 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/02/01 19:28:22 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/02/01 20:50:54 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	up(t_game *a, int x, int y)
 		a->p_y = y - 1;
 		mlx_put_image_to_window(a->mlx, a->win,
 			a->player->img, x * 32, (y - 1) * 32);
+		mlx_put_image_to_window(a->mlx, a->win, a->empty->img, x * 32, y * 32);
 	}
 }
 
@@ -29,6 +30,7 @@ void	down(t_game *a, int x, int y)
 		a->p_y = y + 1;
 		mlx_put_image_to_window(a->mlx, a->win,
 			a->player->img, x * 32, (y + 1) * 32);
+		mlx_put_image_to_window(a->mlx, a->win, a->empty->img, x * 32, y * 32);
 	}
 }
 
@@ -39,6 +41,7 @@ void	left(t_game *a, int x, int y)
 		a->p_x = x - 1;
 		mlx_put_image_to_window(a->mlx, a->win,
 			a->player->img, (x - 1) * 32, y * 32);
+		mlx_put_image_to_window(a->mlx, a->win, a->empty->img, x * 32, y * 32);
 	}
 }
 
@@ -49,6 +52,7 @@ void	right(t_game *a, int x, int y)
 		a->p_x = x + 1;
 		mlx_put_image_to_window(a->mlx, a->win,
 			a->player->img, (x + 1) * 32, y * 32);
+		mlx_put_image_to_window(a->mlx, a->win, a->empty->img, x * 32, y * 32);
 	}
 }
 

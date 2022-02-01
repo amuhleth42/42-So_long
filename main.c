@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 19:22:04 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/02/01 19:22:33 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/02/01 20:58:11 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,13 @@ void	init_images(t_game *a)
 	a->wall = ft_calloc(1, sizeof(t_img));
 	a->empty = ft_calloc(1, sizeof(t_img));
 	a->player = ft_calloc(1, sizeof(t_img));
+	a->collect = ft_calloc(1, sizeof(t_img));
+	a->exit = ft_calloc(1, sizeof(t_img));
 	init_img(a->wall, "assets/wallgrass32.xpm", a->mlx);
-	init_img(a->empty, "assets/star_l_32.xpm", a->mlx);
+	init_img(a->collect, "assets/star_l_32.xpm", a->mlx);
+	init_img(a->empty, "assets/grass32.xpm", a->mlx);
 	init_img(a->player, "assets/flower32.xpm", a->mlx);
+	init_img(a->exit, "assets/orb.xpm", a->mlx);
 }
 
 void	put_img(t_game *a, int i, int j, char c)
@@ -49,14 +53,18 @@ void	put_img(t_game *a, int i, int j, char c)
 	y = i * 32;
 	if (c == '1')
 		mlx_put_image_to_window(a->mlx, a->win, a->wall->img, x, y);
-	else if (c == 'C')
+	else
 		mlx_put_image_to_window(a->mlx, a->win, a->empty->img, x, y);
-	else if (c == 'P')
+	if (c == 'C')
+		mlx_put_image_to_window(a->mlx, a->win, a->collect->img, x, y);
+	if (c == 'P')
 	{
 		a->p_x = j;
 		a->p_y = i;
 		mlx_put_image_to_window(a->mlx, a->win, a->player->img, x, y);
 	}
+	if (c == 'E')
+		mlx_put_image_to_window(a->mlx, a->win, a->exit->img, x, y);
 }
 
 void	put_images(t_game *a, char **map)
