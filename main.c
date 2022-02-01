@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/01 19:22:04 by amuhleth          #+#    #+#             */
+/*   Updated: 2022/02/01 19:22:33 by amuhleth         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "so_long.h"
 
@@ -85,9 +96,7 @@ int	main(int argc, char **argv)
 	init_window(&a);
 	init_images(&a);
 	put_images(&a, a.map);
-
 	mlx_key_hook(a.win, &key_hook, &a);
-
 	mlx_loop(a.mlx);
 	return (0);
 }

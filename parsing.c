@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 17:47:09 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/01/19 19:10:30 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/02/01 19:25:33 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,10 @@ int	is_there_char(char **map, char c)
 
 int	char_is_valid(char c)
 {
-	return (c == '1' || c == '0' || 
-	c == 'C' || c == 'E' || c == 'P');
+	return (c == '1' || c == '0'
+		|| c == 'C' || c == 'E' || c == 'P');
 }
+
 int	check_no_other(char **map)
 {
 	int	i;
@@ -144,7 +145,6 @@ char	**init_parser(char **map, t_parse *parsing)
 	parsing->collect = is_there_char(map, 'C');
 	parsing->position = is_there_char(map, 'P');
 	parsing->no_other = check_no_other(map);
-
 	return (map);
 }
 
@@ -175,8 +175,8 @@ void	print_map(char **map)
 
 int	check_valid_map(t_parse *p)
 {
-	return (p->rectangle && p->closed && p->exit 
-		&& p->collect && p->position 
+	return (p->rectangle && p->closed && p->exit
+		&& p->collect && p->position
 		&& p->no_other && p->ber_format);
 }
 
