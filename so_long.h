@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 17:05:05 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/02/01 18:21:15 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/02/03 14:54:09 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,18 @@
 
 # define SO_LONG_H
 
-#include "mlx.h"
-#include "libft.h"
-#include <fcntl.h>
+# include "mlx.h"
+# include "libft.h"
+# include <fcntl.h>
 
-typedef struct	s_ids
-{
-	void	*mlx;
-	void	*win;
-}			t_ids;
-
-typedef struct	s_img
+typedef struct s_tile
 {
 	void	*img;
 	int		w;
 	int		h;
-}			t_img;
+}			t_tile;
 
-typedef struct	s_parse
+typedef struct s_parse
 {
 	int	x;
 	int	y;
@@ -44,23 +38,32 @@ typedef struct	s_parse
 	int	ber_format;
 }		t_parse;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	void	*mlx;
 	void	*win;
 	char	**map;
 	int		p_x;
 	int		p_y;
-	t_img	*wall;
-	t_img	*collect;
-	t_img	*empty;
-	t_img	*exit;
-	t_img	*player;
+	int		c_count;
+	int		c_all;
+	t_tile	*wall;
+	t_tile	*collect;
+	t_tile	*empty;
+	t_tile	*exit;
+	t_tile	*player;
 	t_parse	*parsing;
 }			t_game;
 
 char	**parser(char *path, t_game *a);
 void	print_map(char **map);
-int		key_hook(int keycode, t_game *game);
+int		key_hook(int key, t_game *game);
+
+int		is_rectangle(char **map, t_parse *parsing);
+int		is_closed(char **map, t_parse *parsing);
+int		check_no_other(char **map);
+int		check_ber(char *path);
+int		is_there_char(char **map, char c);
+int		char_is_valid(char c);
 
 #endif

@@ -4,9 +4,11 @@ FLAGS		= -Wall -Wextra -Werror
 INCL		= -I. -I./mlx -I./libft
 LIB			= -L./libft -lft -L./mlx -lmlx -framework OpenGL -framework AppKit
 
-SRCS		= parsing.c		\
+SRCS		=	parsing.c	\
+				parsing2.c	\
 				main.c		\
 				keyhook.c	\
+
 
 
 all :		${NAME}
