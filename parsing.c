@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 17:47:09 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/02/04 15:54:20 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/02/04 18:03:11 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ char	**read_file(char *path)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		exit(42);
-	map = ft_calloc(50, sizeof(char *));
+	map = ft_calloc(200, sizeof(char *));
 	if (!map)
-		return (NULL);
+		exit(41);
 	i = 0;
 	map[i] = ft_strtrim(get_next_line(fd), "\n");
-	while (map[i] != NULL)
+	while (map[i] != NULL && i < 200)
 	{
 		i++;
 		map[i] = ft_strtrim(get_next_line(fd), "\n");
@@ -41,8 +41,13 @@ int	char_is_valid(char c)
 		|| c == 'C' || c == 'E' || c == 'P');
 }
 
-char	**init_parser(char **map, t_parse *parsing)
+void	init_parser(char **map, t_parse *parsing)
 {
+	if (!map[0])
+	{
+		ft_printf("Invalid path\n");
+		exit(12);
+	}
 	parsing->x = ft_strlen(map[0]);
 	parsing->rectangle = is_rectangle(map, parsing);
 	parsing->closed = is_closed(map, parsing);
@@ -50,7 +55,6 @@ char	**init_parser(char **map, t_parse *parsing)
 	parsing->collect = is_there_char(map, 'C');
 	parsing->position = is_there_char(map, 'P');
 	parsing->no_other = check_no_other(map);
-	return (map);
 }
 
 int	check_valid_map(t_parse *p)
@@ -60,22 +64,17 @@ int	check_valid_map(t_parse *p)
 		&& p->no_other && p->ber_format);
 }
 
-char	**parser(char *path, t_game *a)
+void	parser(char *path, t_game *a)
 {
-	char	**map;
-
-	map = read_file(path);
+	a->map = read_file(path);
 	a->parsing = ft_calloc(1, sizeof(t_parse));
 	if (!a->parsing)
-		return (NULL);
+		exit(12);
 	a->parsing->ber_format = check_ber(path);
-	map = init_parser(map, a->parsing);
+	init_parser(a->map, a->parsing);
 	if (!check_valid_map(a->parsing))
 	{
-		free(map);
-		// to do free correctement
-		// to do display error
-		map = NULL;
+		free_map(a);
+		a->map = NULL;
 	}
-	return (map);
 }

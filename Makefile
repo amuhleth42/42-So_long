@@ -1,6 +1,6 @@
 NAME		= so_long
 
-FLAGS		= -Wall -Wextra -Werror
+FLAGS		= -g -Wall -Wextra -Werror
 INCL		= -I. -I./mlx -I./libft
 LIB			= -L./libft -lft -L./mlx -lmlx -framework OpenGL -framework AppKit
 

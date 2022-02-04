@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 19:22:04 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/02/04 15:19:08 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/02/04 17:49:38 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,11 @@ int	main(int argc, char **argv)
 		ft_printf("T'es bourre bro/sis!");
 		return (0);
 	}
-	a.map = parser(argv[1], &a);
+	parser(argv[1], &a);
 	if (a.map == NULL)
 	{
 		ft_printf("Invalid map.\n");
+		free(a.parsing);
 		return (0);
 	}
 	init_data(&a);

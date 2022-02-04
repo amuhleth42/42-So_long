@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 17:05:05 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/02/04 15:40:09 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/02/04 17:49:48 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_game
 	t_parse	*parsing;
 }			t_game;
 
-char	**parser(char *path, t_game *a);
+void	parser(char *path, t_game *a);
 void	print_map(char **map);
 int		key_hook(int key, t_game *game);
 
@@ -78,5 +78,6 @@ void	left(t_game *a, int x, int y);
 void	right(t_game *a, int x, int y);
 
 void	exit_game(t_game *a);
+void	free_map(t_game *a);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 15:26:24 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/02/04 15:43:25 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/02/04 17:32:49 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ void	free_map(t_game *a)
 	int	i;
 
 	i = 0;
-	while (i < 50)
+	while (a->map[i] != NULL)
 	{
 		free(a->map[i]);
 		i++;
 	}
-	free(a->map);
+	if (a->map != NULL)
+		free(a->map);
 }
 
 void	free_tiles(t_game *a)
