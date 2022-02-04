@@ -8,6 +8,9 @@ SRCS		=	parsing.c	\
 				parsing2.c	\
 				main.c		\
 				keyhook.c	\
+				movement.c	\
+				tiles.c		\
+				exit.c		\
 
 
 

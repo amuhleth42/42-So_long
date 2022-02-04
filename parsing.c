@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 17:47:09 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/02/03 14:05:43 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/02/04 15:54:20 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	**read_file(char *path)
 	int		fd;
 
 	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		exit(42);
 	map = ft_calloc(50, sizeof(char *));
 	if (!map)
 		return (NULL);
