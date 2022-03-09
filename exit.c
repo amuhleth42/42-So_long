@@ -6,11 +6,17 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 15:26:24 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/02/04 17:32:49 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/03/09 14:21:47 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	die(char *s)
+{
+	ft_putstr_fd(s, STDERR_FILENO);
+	exit(EXIT_FAILURE);
+}
 
 void	free_map(t_game *a)
 {

@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 17:05:05 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/02/04 17:49:48 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/03/09 14:22:01 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,8 @@ void	right(t_game *a, int x, int y);
 
 void	exit_game(t_game *a);
 void	free_map(t_game *a);
+void	die(char *s);
+
+char	**lst_to_split(t_list *lines);
 
 #endif

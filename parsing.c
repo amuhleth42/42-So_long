@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 17:47:09 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/02/04 18:03:11 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/03/09 14:41:24 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,26 @@
 
 char	**read_file(char *path)
 {
+	t_list	*lines;
 	char	**map;
-	int		i;
+	char	*line;
 	int		fd;
 
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-		exit(42);
-	map = ft_calloc(200, sizeof(char *));
-	if (!map)
-		exit(41);
-	i = 0;
-	map[i] = ft_strtrim(get_next_line(fd), "\n");
-	while (map[i] != NULL && i < 200)
+		die("open : an error occured when opening file.");
+	line = ft_strtrim(get_next_line(fd), "\n");
+	if (!line)
+		return (NULL);
+	lines = NULL;
+	while (line)
 	{
-		i++;
-		map[i] = ft_strtrim(get_next_line(fd), "\n");
+		ft_lstadd_back(&lines, ft_lstnew(line));
+		line = ft_strtrim(get_next_line(fd), "\n");
 	}
 	close(fd);
+	map = lst_to_split(lines);
+	ft_lstclear(&lines, &free);
 	return (map);
 }
 
@@ -69,7 +71,7 @@ void	parser(char *path, t_game *a)
 	a->map = read_file(path);
 	a->parsing = ft_calloc(1, sizeof(t_parse));
 	if (!a->parsing)
-		exit(12);
+		die("parsing allocation failed");
 	a->parsing->ber_format = check_ber(path);
 	init_parser(a->map, a->parsing);
 	if (!check_valid_map(a->parsing))

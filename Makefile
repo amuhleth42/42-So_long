@@ -6,6 +6,7 @@ LIB			= -L./libft -lft -L./mlx -lmlx -framework OpenGL -framework AppKit
 
 SRCS		=	parsing.c	\
 				parsing2.c	\
+				parsing3.c	\
 				main.c		\
 				keyhook.c	\
 				movement.c	\
@@ -30,6 +31,8 @@ clean :
 	make clean -C ./mlx
 	rm so_long
 
+fclean : clean
+
 re :		fclean all
 
-.PHONY :	re all clean
+.PHONY :	re all clean fclean
