@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 17:47:09 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/03/09 14:41:24 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/04/08 17:44:04 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ char	**read_file(char *path)
 
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-		die("open : an error occured when opening file.");
+		die("open : an error occured when opening file.\n");
 	line = ft_strtrim(get_next_line(fd), "\n");
 	if (!line)
-		return (NULL);
+		die("parsing : empty file.\n");
 	lines = NULL;
 	while (line)
 	{
