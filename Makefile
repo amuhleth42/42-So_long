@@ -4,14 +4,15 @@ FLAGS		= -Wall -Wextra -Werror
 INCL		= -I. -I./mlx -I./libft
 LIB			= -L./libft -lft -L./mlx -lmlx -framework OpenGL -framework AppKit
 
-SRCS		=	parsing.c	\
-				parsing2.c	\
-				parsing3.c	\
-				main.c		\
-				keyhook.c	\
-				movement.c	\
-				tiles.c		\
-				exit.c		\
+SRCS		=	$(addprefix srcs/,	\
+				parsing.c			\
+				parsing2.c			\
+				parsing3.c			\
+				main.c				\
+				keyhook.c			\
+				movement.c			\
+				tiles.c				\
+				exit.c)
 
 
 
