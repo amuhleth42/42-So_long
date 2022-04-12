@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 19:22:04 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/02/04 17:49:38 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/04/12 18:43:30 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,13 @@ void	init_data(t_game *a)
 	ft_printf("All items : %d\n", a->c_all);
 }
 
+void	init_mlx_hook(t_game *a)
+{
+	mlx_hook(a->win, 2, 0, &key_down, a);
+	mlx_key_hook(a->win, &key_hook, a);
+	mlx_loop(a->mlx);
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	a;
@@ -73,7 +80,6 @@ int	main(int argc, char **argv)
 	init_window(&a);
 	init_tiles(&a);
 	put_tiles(&a, a.map);
-	mlx_key_hook(a.win, &key_hook, &a);
-	mlx_loop(a.mlx);
+	init_mlx_hook(&a);
 	return (0);
 }

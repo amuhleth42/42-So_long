@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 17:05:05 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/03/09 14:22:01 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/04/12 18:40:48 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_game
 void	parser(char *path, t_game *a);
 void	print_map(char **map);
 int		key_hook(int key, t_game *game);
+int		key_down(int key, t_game *game);
 
 int		is_rectangle(char **map, t_parse *parsing);
 int		is_closed(char **map, t_parse *parsing);

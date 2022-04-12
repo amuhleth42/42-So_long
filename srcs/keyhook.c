@@ -6,7 +6,7 @@
 /*   By: amuhleth <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 18:37:28 by amuhleth          #+#    #+#             */
-/*   Updated: 2022/02/04 15:48:42 by amuhleth         ###   ########.fr       */
+/*   Updated: 2022/04/12 18:44:07 by amuhleth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ int	key_hook(int key, t_game *a)
 {
 	if (key == 53)
 		exit_game(a);
+	return (0);
+}
+
+int	key_down(int key, t_game *a)
+{
 	if (key == 13 || key == 1 || key == 0 || key == 2)
 		movement(key, a);
 	return (0);
